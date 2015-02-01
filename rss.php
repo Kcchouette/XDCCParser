@@ -34,52 +34,51 @@ if(time() > xp_get("time")+UPDATE_FREQ)
 	file_get_contents(_URL.'refresh.php',0,stream_context_create(array('http' => array('timeout' => 0))));
 
 $bots=xp_get("bots");
-if(isset($_GET['nick'])){
-header('Content-type: application/rss+xml');
-for($i=0;isset($bots[$i]);$i++){
-if($bots[$i]['nick']==$_GET['nick']){
-echo '<?xml version="1.0" encoding="utf-8" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-		<channel>
-		<title>Xdcc Mooo !</title>
-		<atom:link href="'.URL.'rss.php?nick='.rawurlencode($bots[$i]['nick']).'" rel="self" type="application/rss+xml"/>
-		<link>'.URL.'</link>
-		<description></description>
-		<language>en</language>';
-	for($j=0;isset($bots[$i]['packs'][1][$j]);$j++){
-echo '		<item>
-		<title>'.$bots[$i]['packs'][5][$j].'</title>'."\n";
-		echo '<link>'.URL.'?nick='.rawurlencode($bots[$i]['nick']).'</link>'."\n";
-		echo '<guid>urn:uuid:'.md5(
-	$bots[$i]['packs'][1][$j].
-	$bots[$i]['packs'][2][$j].
-	$bots[$i]['packs'][3][$j].
-	$bots[$i]['packs'][4][$j].
-	$bots[$i]['packs'][5][$j].
-	$bots[$i]['nick']
-		).'</guid>
-		<description>/msg '.$bots[$i]['nick'].' XDCC SEND '.$bots[$i]['packs'][1][$j].'</description>
-		</item>
-';
-}
+if(isset($_GET['nick'])) {
+	header('Content-type: application/rss+xml');
+	for($i=0;isset($bots[$i]);$i++) {
+		if($bots[$i]['nick']==$_GET['nick']) {
+			echo '<?xml version="1.0" encoding="utf-8" ?>
+			<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+			<channel>
+			<title>Xdcc Mooo !</title>
+			<atom:link href="'.URL.'rss.php?nick='.rawurlencode($bots[$i]['nick']).'" rel="self" type="application/rss+xml"/>
+			<link>'.URL.'</link>
+			<description></description>
+			<language>en</language>';
+			for($j=0;isset($bots[$i]['packs'][1][$j]);$j++) {
+				echo '<item>
+					<title>'.$bots[$i]['packs'][5][$j].'</title>'."\n";
+				echo 	'<link>'.URL.'?nick='.rawurlencode($bots[$i]['nick']).'</link>'."\n";
+				echo 	'<guid>urn:uuid:'.md5(
+					$bots[$i]['packs'][1][$j].
+					$bots[$i]['packs'][2][$j].
+					$bots[$i]['packs'][3][$j].
+					$bots[$i]['packs'][4][$j].
+					$bots[$i]['packs'][5][$j].
+					$bots[$i]['nick']
+				).'</guid>
+				<description>/msg '.$bots[$i]['nick'].' XDCC SEND '.$bots[$i]['packs'][1][$j].'</description>
+				</item>';
+			}
+		}
 	}
-}
-?>
-		</channel>
-		</rss>
-<?php
-}else{
-echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Mooo XDCC RSS</title>
-</head><body><ul>';
-for($i=0;isset($bots[$i]);$i++){
-echo '<li><a href="?nick='.$bots[$i]['nick'].'">'.$bots[$i]['nick'].'</a></li>';
-}
-echo '</ul></body></html>';
+	echo '</channel>
+	</rss>';
+
+} else {
+	echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Mooo XDCC RSS</title>
+	</head>
+	<body><ul>';
+	for($i=0;isset($bots[$i]);$i++) {
+		echo '<li><a href="?nick='.$bots[$i]['nick'].'">'.$bots[$i]['nick'].'</a></li>';
+	}
+	echo '</ul></body></html>';
 }
 
 ?>

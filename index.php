@@ -20,10 +20,10 @@ require_once 'core.php';
 require_once 'smarty/libs/Smarty.class.php';
 
 //initialize smarty
-$s = new Smarty();
-$s->caching = false;
-$s->template_dir = "./tpl";
-$s->compile_dir =  "./templates_c";
+$smarty = new Smarty;
+$smarty->caching = false;
+$smarty->template_dir = "./tpl";
+$smarty->compile_dir =  "./templates_c";
 
 //figure out url, if needed.
 if(!URL) {
@@ -35,19 +35,19 @@ if(!URL) {
 }
 
 //assign our vars
-$s->assign("url", _URL);
-$s->assign("skin", $_REQUEST['skin'] ? $_REQUEST['skin'] : SKIN);
-$s->assign("display_sc", DISPLAY_SC);
-$s->assign("bots", xp_get("bots"));
-$s->assign("bookmarks", xp_get("bookmarks"));
-$_GET['search'] ? $s->assign("search", htmlentities(stripslashes($_GET['search']))) : null;
-$_GET['nick'] ? $s->assign("nick", $_GET['nick']) : null;
+$smarty->assign("url", _URL);
+$smarty->assign("skin", $_REQUEST['skin'] ? $_REQUEST['skin'] : SKIN);
+$smarty->assign("display_sc", DISPLAY_SC);
+$smarty->assign("bots", xp_get("bots"));
+$smarty->assign("bookmarks", xp_get("bookmarks"));
+$_GET['search'] ? $smarty->assign("search", htmlentities(stripslashes($_GET['search']))) : null;
+$_GET['nick'] ? $smarty->assign("nick", $_GET['nick']) : null;
 if(IRC) {
-$s->assign("irc_chan", IRC_CHANNEL);
-$s->assign("irc_net", IRC_NETWORK);
+	$smarty->assign("irc_chan", IRC_CHANNEL);
+	$smarty->assign("irc_net", IRC_NETWORK);
 }
 
-$s->display("packlist.tpl");
+$smarty->display('packlist.tpl');
 
 //how old is our cache?
 if(time() > xp_get("time")+UPDATE_FREQ)

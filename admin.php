@@ -31,39 +31,39 @@ require_once 'core.php';
 require_once 'smarty/libs/Smarty.class.php';
 
 //initialize smarty
-$s = new Smarty();
-$s->caching = false;
-$s->template_dir = "./tpl";
-$s->compile_dir =  "./templates_c";
+$smarty = new Smarty;
+$smarty->caching = false;
+$smarty->template_dir = "./tpl";
+$smarty->compile_dir =  "./templates_c";
 $botconfig = xp_get("botconfig");
 $config = xp_get("config");
 $bookmarks = xp_get("bookmarks");
 
-$s->assign("skin", $_REQUEST['skin'] ? $_REQUEST['skin'] : SKIN);
+$smarty->assign("skin", $_REQUEST['skin'] ? $_REQUEST['skin'] : SKIN);
 if(IRC) {
-$s->assign("irc_chan", IRC_CHANNEL);
-$s->assign("irc_net", IRC_NETWORK);
+	$smarty->assign("irc_chan", IRC_CHANNEL);
+	$smarty->assign("irc_net", IRC_NETWORK);
 }
 
 switch($_REQUEST['do']) {
 	case 'editbot':
 		if($botconfig[$_REQUEST['bot']]) {
-			$s->assign("edit", $_REQUEST['bot']);
-			$s->assign("boturi", $botconfig[$_REQUEST['bot']]);
+			$smarty->assign("edit", $_REQUEST['bot']);
+			$smarty->assign("boturi", $botconfig[$_REQUEST['bot']]);
 		}
-		$s->display("adminbot.tpl");
+		$smarty->display('adminbot.tpl');
 		exit();
 	case 'editbookmark':
 		if($bookmarks[$_REQUEST['bm_id']]) {
-			$s->assign("bm", htmlentities($bookmarks[$_REQUEST['bm_id']][0]));
-			$s->assign("bmv", htmlentities($bookmarks[$_REQUEST['bm_id']][1]));
-			$s->assign("bm_id", $_REQUEST['bm_id']);
+			$smarty->assign("bm", htmlentities($bookmarks[$_REQUEST['bm_id']][0]));
+			$smarty->assign("bmv", htmlentities($bookmarks[$_REQUEST['bm_id']][1]));
+			$smarty->assign("bm_id", $_REQUEST['bm_id']);
 		}
-		$s->display("adminbookmark.tpl");
+		$smarty->display('adminbookmark.tpl');
 		exit();
 	case 'editgroup':
-		$s->assign("group",$config['group']);
-		$s->display("admingroup.tpl");
+		$smarty->assign("group",$config['group']);
+		$smarty->display('admingroup.tpl');
 		exit();
 	case 'deletebot':
 		if($botconfig[$_REQUEST['bot']]) {
@@ -108,9 +108,9 @@ switch($_REQUEST['do']) {
 }
 
 if($refresh) require_once "refresh.php";
-$s->assign("bots",$botconfig);
-$s->assign("config",$config);
-$s->assign("bookmarks",$bookmarks);
-$s->display("adminindex.tpl");
+$smarty->assign("bots",$botconfig);
+$smarty->assign("config",$config);
+$smarty->assign("bookmarks",$bookmarks);
+$smarty->display('adminindex.tpl');
 
 ?>
