@@ -49,10 +49,10 @@
 		<h1>Javascript is required for this site.</h1>
 	</div>
 	<div class="content" align="center"><a href="javascript:p.goTop();">&#8593;&#8593;</a></div>
-	<div class="footer"><span class="default">Powered by </span><a href="http://xdccparser.is-fabulo.us/"><span class="default">XDCC Parser v1.2beta</span></a></div>
+	<div class="footer"><span class="default">Powered by </span><a href="https://github.com/Kcchouette/XDCCParser-global/" target="_blank"><span class="default">XDCC 
+Parser</span></a></div>
 	<div id="status"><p><span class="loading">Searching...</span></p></div>
 </div>
 </div>
 </body>
 </html>
-
