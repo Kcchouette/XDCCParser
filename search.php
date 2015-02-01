@@ -32,6 +32,7 @@ function literalSearch($search) {
 		return simpleSearch($search);
 	}
 }
+
 function simpleSearch($search) {
 	$search = str_replace(array("_", ";", "'", ".")," ",$search);
 	return explode(" ",$search);
@@ -77,6 +78,5 @@ foreach($bots as &$bot) {
 
 	foreach($xpacks as $pack)
 		print("p.k[".$x++."] = {b:\"".$bot['nick']."\", n:".$pack['number'].", s:".$pack['size'].", f:\"".$pack['name']."\"};\n");
-
 }
 ?>
