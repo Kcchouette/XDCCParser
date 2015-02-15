@@ -37,5 +37,4 @@ various other settings such as skin and irc channel can be found in core.php
 We want your feedback! Give us feedback and submit bug reports.
 
 ###If you see "require javascript"
-In core.php, ``define('URL', '');`` change the ``''`` by 
-``'http://theurlofyourXDCCParser.ext'``
+In core.php, ``define('URL', '');`` change the ``''`` by ``'http://theurlofyourXDCCParser.ext'``
