@@ -1,11 +1,11 @@
 #INSTALL
 ##Requirements:
- * PHP5 (has not been tested with PHP4, but it should work)
- * [Smarty Template Engine](https://github.com/smarty-php/smarty/)
+ * PHP5 (Smarty 3.x is _NOT_ compatible with PHP4)
+ * [Smarty Template Engine](https://github.com/smarty-php/smarty/) - we offer the last release if you clone
  * A modern web browser - Internet Explorer 6 is _NOT_ supported
 
 ##Highly Recommended:
- * XCache (will work without it, but will be noticeably slower if there are many packs.) 
+ * PHP XCache extension (will work without it, but will be noticeably slower if there are many packs.) 
  * PHP CURL extension - without CURL, packlists served by dinoex's built in http server will not be downloaded correctly.
  * Normal txt files on a proper webserver (apache, lighty, nginx, etc) and local txt files will still be fine.
 
@@ -35,3 +35,7 @@ bookmarks can be added in the admin panel
 various other settings such as skin and irc channel can be found in core.php
 
 We want your feedback! Give us feedback and submit bug reports.
+
+###If you see "require javascript"
+In core.php, ``define('URL', '');`` change the ``''`` by 
+``'http://theurlofyourXDCCParser.ext'``

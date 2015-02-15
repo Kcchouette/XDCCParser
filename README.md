@@ -5,7 +5,7 @@
 XDCC Parser is a PHP/AJAX script that parses packlists created by iroffer and presents the packlist in a fully searchable web2.0 environment.
 
 XDCC Parser aims to make XDCC packlists more presentable while staying efficient and lightweight.
-Although originally developed by DrX, current development is now lead by xshadowfire.
+Originally developed by DrX, and then xshadowfire.
 
 ### Global vs. Single
 
@@ -20,9 +20,6 @@ Although originally developed by DrX, current development is now lead by xshadow
 ### Supported browsers
 
 Internet Explorer 7+, Firefox 3+, Opera 9.6+, Chrome, Safari 4, Midori, most modern browsers
-
-### Demo
-Old demo: [here](http://xdcc-demo.genua.fr/parser/)
 
 ### Feedback/Bug Reports/Development
 

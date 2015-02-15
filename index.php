@@ -9,11 +9,11 @@
  * Public License version 3 as published by the Free Sofware
  * Foundation.
  *
- * @link http://xdccparser.is-fabulo.us/
- * @version 1.2.0
+ * @link https://github.com/Kcchouette/XDCCParser-global/
+ * @author Kcchouette
  * @author Alex 'xshadowfire' Yu <ayu@xshadowfire.net>
  * @author DrX
- * @copyright 2008-2009 Alex Yu and DrX
+ * @copyright 2008-2009 Alex Yu and DrX - 2015 Kcchouette
  */
 
 require_once 'core.php';
