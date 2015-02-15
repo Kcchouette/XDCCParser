@@ -64,12 +64,12 @@ function p() {
 	this.getLastName=function() {
 		var name = (this.lastType==1) ? "Search: " : "Bot: ";
 		name += this.lastValue;
-		name += (this.lastType!=1) ? ' [<a href="rss.php?nick='+this.lastValue+'">rss</a>]' : "";
+		name += (this.lastType!=1) ? ' [<a href="rss.php?nick='+encodeURIComponent(this.lastValue)+'">rss</a>]' : "";
 		return name;
 	};
 	this.getLastURI=function() {
 		var param = (this.lastType==1) ? "?search=" : "?nick=";
-		param += this.lastValue;
+		param += encodeURIComponent(this.lastValue);
 		prompt('Permalink:',this.url+param);
 	};
 	this.genCommand=function(nick,pack) {
