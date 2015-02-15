@@ -20,7 +20,7 @@ require_once 'core.php';
 header( "Expires: Mon, 20 Dec 1998 01:00:00 GMT" );
 header( "Cache-Control: no-cache, must-revalidate" );
 header( "Pragma: no-cache" );
-header( "Content-Type: text/plain; charset=iso-8859-1" );
+header( "Content-Type: text/plain; charset=utf-8" );
 
 function literalSearch($search) {
 	$t = array();
