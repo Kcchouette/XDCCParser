@@ -29,12 +29,9 @@ See your host for questions regarding the requirements.
 	multiple groups example: (groupnameone|groupnametwo|groupnamethree)
 	WRONG: [durhuricanread]
 
-###bookmarks:
-bookmarks can be added in the admin panel
-
-various other settings such as skin and irc channel can be found in core.php
+###Bookmarks:
+ * bookmarks can be added in the admin panel
+ * Various other settings such as skin and irc channel can be found in core.php
 
 We want your feedback! Give us feedback and submit bug reports.
 
-###If you see "require javascript"
-In core.php, ``define('URL', '');`` change the ``''`` by ``'http://theurlofyourXDCCParser.ext'``

@@ -3,11 +3,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
 	<title>Packlist</title>
-	<link rel="stylesheet" href="{$url}style{$skin}.css" type="text/css" id="skin" />
+	<link rel="stylesheet" href="style{$skin}.css" type="text/css" id="skin" />
 	<!--[if lte IE 6]>
-	<link rel="stylesheet" href="{$url}style-ie.css" type="text/css" />
+	<link rel="stylesheet" href="style-ie.css" type="text/css" />
 	<![endif]-->
-	<script type="text/javascript" src="{$url}packlist.js"></script>
+	<script type="text/javascript" src="packlist.js"></script>
 </head>
 <body onload="p.init('{$url}');{if $nick}p.nickPacks('{$nick}');{/if}">
 <div class="botlist">
