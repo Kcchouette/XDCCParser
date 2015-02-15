@@ -12,23 +12,24 @@
 <body onload="p.init('{$url}');{if $nick}p.nickPacks('{$nick}');{/if}">
 <div class="botlist">
 <div id="botlist" style="padding:10px;">
-{if $display_sc}<h3>Skins</h3>
-<a href="javascript:p.setSkin(1);">dark</a><br />
-<a href="javascript:p.setSkin(3);">dark-expanded</a><br />
-<a href="javascript:p.setSkin(2);">light pink</a><br />
-<a href="javascript:p.setSkin(4);">light pink-expanded</a><br />
-<a href="javascript:p.setSkin(5);">rain</a><br />
-<a href="javascript:p.setSkin(6);">rain-expanded</a><br /><br />{/if}
+	{if $display_sc}<h3>Skins</h3>
+	<a href="javascript:p.setSkin(1);">dark</a><br />
+	<a href="javascript:p.setSkin(3);">dark-expanded</a><br />
+	<a href="javascript:p.setSkin(2);">light pink</a><br />
+	<a href="javascript:p.setSkin(4);">light pink-expanded</a><br />
+	<a href="javascript:p.setSkin(5);">rain</a><br />
+	<a href="javascript:p.setSkin(6);">rain-expanded</a><br /><br />{/if}
 <h3>Bots</h3>
 {foreach from=$bots item=bot}
-<a href="javascript:p.nickPacks('{$bot.nick|replace:'\\':'\\\\'}');">{$bot.nick}</a><br />
+	<a href="javascript:p.nickPacks('{$bot.nick|replace:'\\':'\\\\'}');">{$bot.nick}</a><br />
 {/foreach}
 {if $bookmarks}
-<br />
-<h3>Bookmarks</h3>
-{foreach from=$bookmarks item=bookmark}
-<a href="javascript:document.getElementById('search').value='{$bookmark.1|escape:"quotes"|replace:'"':'&quot;'}';p.search();">{$bookmark.0}</a><br />
-{/foreach}{/if}
+	<br />
+	<h3>Bookmarks</h3>
+	{foreach from=$bookmarks item=bookmark}
+	<a href="javascript:document.getElementById('search').value='{$bookmark.1|escape:"quotes"|replace:'"':'&quot;'}';p.search();">{$bookmark.0}</a><br />
+	{/foreach}
+{/if}
 </div>
 </div>
 <div class="mainWrapper">
