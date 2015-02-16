@@ -86,6 +86,7 @@ function p() {
 		}
 	};
 	this.nickPacks=function(nick) {
+		document.getElementById('search').value = "";
 		this.request("nick="+nick);
 		this.lastType = 2;
 		this.lastValue = nick;
