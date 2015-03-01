@@ -7,7 +7,7 @@
  * Public License version 3 as published by the Free Sofware
  * Foundation.
  *
- * @link https://github.com/Kcchouette/XDCCParser-global/
+ * @link https://github.com/Kcchouette/XDCCParser/
  * @author Kcchouette
  * @author Alex 'xshadowfire' Yu <ayu@xshadowfire.net>
  * @author DrX

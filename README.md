@@ -13,7 +13,7 @@ Internet Explorer 7+, Firefox 3+, Opera 9.6+, Chrome, Safari 4, Midori, most mod
 
 ### Feedback/Bug Reports/Development
 
- * On [GitHub](https://github.com/Kcchouette/XDCCParser-global/) 
+ * On [GitHub](https://github.com/Kcchouette/XDCCParser/) 
 
 ### FAQ
 
