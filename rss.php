@@ -23,7 +23,7 @@ require_once 'smarty/libs/Smarty.class.php';
 if(!URL) {
 	$uri = explode("/",$_SERVER['REQUEST_URI']);
 	array_pop($uri);
-	define('_URL', "http://".$_SERVER['SERVER_NAME'].implode("/",$uri)."/");
+	define('_URL', "http://" . $_SERVER['SERVER_ADDR'] . implode("/",$uri)."/");
 } else {
 	define('_URL', URL);
 }
@@ -39,26 +39,24 @@ if(isset($_GET['nick'])) {
 	for($i=0;isset($bots[$i]);$i++) {
 		if($bots[$i]['nick']==$_GET['nick']) {
 			echo '<?xml version="1.0" encoding="utf-8" ?>
-			<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+			<rss version="2.0">
 			<channel>
-			<title>Xdcc Mooo !</title>
-			<atom:link href="'.URL.'rss.php?nick='.rawurlencode($bots[$i]['nick']).'" rel="self" type="application/rss+xml"/>
-			<link>'.URL.'</link>
-			<description></description>
-			<language>en</language>';
+			<title>' . RSS_TITLE . '</title>
+			<link>' . URL . '</link>
+			<description>' . RSS_DESC . '</description>';
 			for($j=0;isset($bots[$i]['packs'][1][$j]);$j++) {
 				echo '<item>
-					<title>'.$bots[$i]['packs'][5][$j].'</title>'."\n";
-				echo 	'<link>'.URL.'?nick='.rawurlencode($bots[$i]['nick']).'</link>'."\n";
-				echo 	'<guid>urn:uuid:'.md5(
-					$bots[$i]['packs'][1][$j].
-					$bots[$i]['packs'][2][$j].
-					$bots[$i]['packs'][3][$j].
-					$bots[$i]['packs'][4][$j].
-					$bots[$i]['packs'][5][$j].
+					<title>' . $bots[$i]['packs'][5][$j] . '</title>';
+				echo 	'<link>' . _URL . '?nick=' . rawurlencode($bots[$i]['nick']) .'</link>';
+				echo 	'<description>/msg ' . $bots[$i]['nick'] . ' XDCC SEND ' . $bots[$i]['packs'][1][$j] . '</description>
+				<guid>urn:uuid:'.md5(
+					$bots[$i]['packs'][1][$j] .
+					$bots[$i]['packs'][2][$j] .
+					$bots[$i]['packs'][3][$j] .
+					$bots[$i]['packs'][4][$j] .
+					$bots[$i]['packs'][5][$j] .
 					$bots[$i]['nick']
-				).'</guid>
-				<description>/msg '.$bots[$i]['nick'].' XDCC SEND '.$bots[$i]['packs'][1][$j].'</description>
+				) . '</guid>
 				</item>';
 			}
 		}
@@ -72,7 +70,7 @@ if(isset($_GET['nick'])) {
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Mooo XDCC RSS</title>
+		<title>' . RSS_TITLE . '</title>
 	</head>
 	<body><ul>';
 	for($i=0;isset($bots[$i]);$i++) {
