@@ -9,11 +9,11 @@
  * Public License version 3 as published by the Free Sofware
  * Foundation.
  *
- * @link http://xdccparser.is-fabulo.us/
- * @version 1.2.0
+ * @link https://github.com/Kcchouette/XDCCParser-global/
+ * @author Kcchouette
  * @author Alex 'xshadowfire' Yu <ayu@xshadowfire.net>
  * @author DrX
- * @copyright 2008-2009 Alex Yu and DrX
+ * @copyright 2008-2009 Alex Yu and DrX - 2015 Kcchouette
  */
 
 define('SKIN', 5); //default skin. comes with 6 skins, set to a number 1-6.
@@ -26,6 +26,8 @@ define('IRC_CHANNEL', 'XDCCParser'); //don't include the #
 define('IRC_NETWORK', 'irc.rizon.net'); //the network
 define('URL', ''); // optional: your url goes here. example: http://youpacklist.com/
 // trailing slash required. if left blank, the script will figure out the url.
+define('RSS_TITLE', 'XDCC Mooo!'); //rss title
+define('RSS_DESC', 'My Desc'); //rss description
 
 /* ############################################# */
 /* #             DO NOT EDIT BELOW             # */
