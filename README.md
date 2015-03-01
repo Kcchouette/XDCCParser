@@ -1,6 +1,5 @@
 # XDCC Parser Project Page 
-Based from [XDCC Parser 
-(web-archive)](http://web.archive.org/web/20120826215828/http://xdccparser.is-fabulo.us/) and fully compatible until [Kcchouette/XDCCParser@c2b0ab4](https://github.com/Kcchouette/XDCCParser/tree/c2b0ab45e26a4d8a10aaef23a4abd25054093039)
+Based from [XDCC Parser (web-archive)](http://web.archive.org/web/20120826215828/http://xdccparser.is-fabulo.us/) and fully compatible until [Kcchouette/XDCCParser@c2b0ab4](https://github.com/Kcchouette/XDCCParser/tree/c2b0ab45e26a4d8a10aaef23a4abd25054093039)
 ### About XDCC Parser
 
 XDCC Parser is a PHP/AJAX script that parses packlists created by iroffer and presents the packlist in a fully searchable web2.0 environment.

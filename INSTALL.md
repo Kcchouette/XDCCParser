@@ -34,4 +34,3 @@ See your host for questions regarding the requirements.
  * Various other settings such as skin and irc channel can be found in core.php
 
 We want your feedback! Give us feedback and submit bug reports.
-
