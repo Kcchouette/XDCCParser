@@ -76,7 +76,6 @@ function p() {
 		prompt('Paste this in your irc client:','/msg '+nick+' xdcc send #'+pack);
 	};
 	this.search=function() {
-		document.body.scrollTop = document.documentElement.scrollTop = 0;
 		if(document.getElementById('search').value != "" && document.getElementById('search').value != " ") {
 			var search = document.getElementById('search').value.replace(/\+/ig,"%2B");
 			this.request("t="+search);
@@ -85,6 +84,7 @@ function p() {
 		} else {
 			this.table.innerHTML = this.tablehead + "<tr class='anime0' id='start'><td class='none' colspan='4'>Please select a bot or enter search terms to start.</td></tr></table>";
 		}
+		this.goTop();
 	};
 	this.nickPacks=function(nick) {
 		document.getElementById('search').value = "";
