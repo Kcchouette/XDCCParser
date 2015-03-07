@@ -152,6 +152,11 @@ th {
 	margin:0px;
 	border-bottom: #000 1px solid;
 }
+.botlist .forwards {
+        list-style-type: none;
+        margin: 0px;
+        padding:0px;
+}
 .clear {
 	clear:both;
 }

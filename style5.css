@@ -154,6 +154,11 @@ th {
 	border-bottom: #535c64 1px solid;
 	color: #aab3b9;
 }
+.botlist .forwards {
+        list-style-type: none;
+        margin: 0px;
+        padding:0px;
+}
 .clear {
 	clear:both;
 }

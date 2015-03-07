@@ -7,7 +7,7 @@
 	<!--[if lte IE 6]>
 	<link rel="stylesheet" href="style-ie.css" type="text/css" />
 	<![endif]-->
-	<script type="text/javascript" src="packlist.js"></script>
+	<script type="text/javascript" src="uncompressed.js"></script>
 </head>
 <body onload="p.init('{$url}');{if $nick}p.nickPacks('{$nick}');{/if}">
 <div class="botlist">
@@ -20,9 +20,7 @@
 	<a href="javascript:p.setSkin(5);">rain</a><br />
 	<a href="javascript:p.setSkin(6);">rain-expanded</a><br /><br />{/if}
 <h3>Bots</h3>
-{foreach from=$bots item=bot}
-	<a href="javascript:p.nickPacks('{$bot.nick|replace:'\\':'\\\\'}');">{$bot.nick}</a><br />
-{/foreach}
+{include file="botlist.tpl"}
 {if $bookmarks}
 	<br />
 	<h3>Bookmarks</h3>
