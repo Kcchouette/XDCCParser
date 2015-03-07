@@ -65,18 +65,19 @@ if(isset($_GET['nick'])) {
 	</rss>';
 
 } else {
-	echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-	<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>' . RSS_TITLE . '</title>
-	</head>
-	<body><ul>';
-	for($i=0;isset($bots[$i]);$i++) {
-		echo '<li><a href="?nick='.$bots[$i]['nick'].'">'.$bots[$i]['nick'].'</a></li>';
-	}
-	echo '</ul></body></html>';
+	//initialize smarty
+	$smarty = new Smarty;
+	$smarty->caching = false;
+	$smarty->template_dir = "./tpl";
+	$smarty->compile_dir = "./templates_c";
+		
+	$smarty->assign("skin", $_REQUEST['skin'] ? $_REQUEST['skin'] : SKIN);
+	
+	$smarty->display("header.tpl");
+	$smarty->assign("bots", xp_get("bots"));
+        echo '<h2>Bots</h2>';
+	$smarty->display("botlist.tpl");
+	$smarty->display("adminfooter.tpl");
 }
 
 ?>
