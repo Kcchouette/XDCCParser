@@ -29,7 +29,7 @@ $smarty->compile_dir =  "./templates_c";
 if(!URL) {
 	$uri = explode("/",$_SERVER['REQUEST_URI']);
 	array_pop($uri);
-	define('_URL', "http://".$_SERVER['SERVER_NAME'].implode("/",$uri)."/");
+	define('_URL', "http://" . $_SERVER['SERVER_ADDR'] . implode("/",$uri)."/");
 } else {
 	define('_URL', URL);
 }
