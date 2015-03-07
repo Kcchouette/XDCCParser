@@ -42,6 +42,11 @@ foreach($access as $file) {
 	$xdccList = str_replace( array( chr(2), chr(3), chr(16), chr(31), chr(13) ), "", $xdccList ); //remove irc formatting (or something <_<)
 	
 	if(preg_match("/\s+\*\*\s+To\s+request\s+a\s+file,\s+type\s+\"\/msg\s+(.*?)\s+xdcc\s+send|get\s+#x\"\s+\*\*\s+\W/mi",$xdccList,$data['nick'])) {
+		preg_match("/\s+\*\*\s+(\d+)\s+packs?\s+\*\*\s+(\d+)\s+of\s+(\d+)\s+slots\s+open,\s+(Min:\s+(.*?),\s+)?(Max:\s+.*?,\s+)?Record:\s+(.*)\W/mi",$xdccList,$data['slotsbw']);
+		preg_match("/\s+\*\*\s+Bandwidth\s+Usage\s+\*\*\s+Current:\s+(.*?),\s+(Cap:\s+.*?,\s+){0,1}Record:\s+(.*)\W/mi",$xdccList,$data['bw']);
+		preg_match("/Total\s+Offered:\s+(.*?)\s*(KB|MB|GB|TB|PB)\s+Total\s+Transferred:\s+(.*?)\s*(KB|MB|GB|TB|PB)\W/mi",$xdccList,$data['totals']);
+		/* GET PACKS & INFO */
+		
 		$bot = array();
 		$match = $config['group'] ? ".*".str_replace( array("^",".","*","\\","+","?","\$"), array("\^","\.","\*","\\\\","\+","\?","\\\$"), $config['group'] ).".*" : ".*";
 		eval("preg_match_all(\"/#(\\d+)\\s+\\d+x\\s+\\[.*?(\\d+\\.?\\d+?)(\\D)\\]\\s+(\\d+\\.\\d+\\.\\d+\\s+\\d+:\\d+\\s+)?(".$match.")\\W/mi\",\$xdccList,\$bot['packs']);");
