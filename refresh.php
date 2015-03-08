@@ -56,11 +56,11 @@ foreach($access as $file) {
 		$stats[$bot["nick"]]['openslots'] = $data['slotsbw']['2'];
 		$stats[$bot["nick"]]['totalslots'] = $data['slotsbw']['3'];
 		$stats[$bot["nick"]]['minspeed'] = $data['slotsbw']['5'] ? $data['slotsbw']['5'] : '0.0kB/s';
-		$stats[$bot["nick"]]['maxspeed'] = $data['slotsbw']['9'] ? data['slotsbw']['9'] : $data['slotsbw']['7'];
+		$stats[$bot["nick"]]['maxspeed'] = $data['slotsbw']['9'] ? $data['slotsbw']['9'] : $data['slotsbw']['7'];
 		$stats[$bot["nick"]]['currbw'] = $data['bw']['1'];
 		$stats[$bot["nick"]]['overallrecord'] = $data['bw']['5'] ? $data['bw']['5'] : $data['bw']['3'];
 		$stats[$bot["nick"]]['offered'] = $data['totals']['1'];
-		$stats['$bot["nick"]']['bandwidth'] = $data['totals']['2'];
+		$stats[$bot["nick"]]['bandwidth'] = $data['totals']['2'];
 		/* END ASSIGN */
 
 		for($i=0;$i < count($bot['packs'][0]); $i++) {
