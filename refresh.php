@@ -45,8 +45,8 @@ foreach($access as $file) {
 	
 	if(preg_match("/\s+\*\*\s+To\s+request\s+a\s+file,\s+type\s+\"\/msg\s+(.*?)\s+xdcc\s+send|get\s+#x\"\s+\*\*\s+\W/mi", $xdccList, $data['nick'])) {
 		preg_match("/\s+\*\*\s+(\d+)\s+packs?\s+\*\*\s+(\d+)\s+of\s+(\d+)\s+slots\s+open,\s+(Min:\s+(.*?),\s+)?(Max:\s+(.*?),?\s+)?(Record:\s+(.*))?/mi", $xdccList, $data['slotsbw']);
-		preg_match("/\s+\*\*\s+Bandwidth\s+Usage\s+\*\*\s+Current:\s+(.*?),\s+(Cap:\s+.*?,\s+){0,1}Record:\s+(.*)\W/mi", $xdccList, $data['bw']);
-		preg_match("/Total\s+Offered:\s+(.*)\s+Total\s+Transferred:\s+(.*)/mi", $xdccList, $data['totals']);
+		preg_match("/\s+\*\*\s+Bandwidth\s+Usage\s+\*\*\s+Current:\s+(.*?),\s+(Cap:\s+(.*?),\s+){0,1}(Record:\s+(.*))?\W/mi", $xdccList, $data['bw']);
+		preg_match("/Total\s+Offered:\s+(.*?)\s+Total\s+Transferred:\s+(.*)/mi", $xdccList, $data['totals']);
 		/* GET PACKS & INFO */
 		$bot = array();
 		$match = $config['group'] ? ".*".str_replace( array("^",".","*","\\","+","?","\$"), array("\^","\.","\*","\\\\","\+","\?","\\\$"), $config['group'] ).".*" : ".*";
@@ -55,10 +55,10 @@ foreach($access as $file) {
 		$stats[$bot["nick"]]['packcount'] = $data['slotsbw']['1'];
 		$stats[$bot["nick"]]['openslots'] = $data['slotsbw']['2'];
 		$stats[$bot["nick"]]['totalslots'] = $data['slotsbw']['3'];
-		$stats[$bot["nick"]]['minspeed'] = $data['slotsbw']['5'] ? $data['slotsbw']['5'] : "0.0kB/s";
+		$stats[$bot["nick"]]['minspeed'] = $data['slotsbw']['5'] ? $data['slotsbw']['5'] : '0.0kB/s';
 		$stats[$bot["nick"]]['maxspeed'] = $data['slotsbw']['9'] ? data['slotsbw']['9'] : $data['slotsbw']['7'];
 		$stats[$bot["nick"]]['currbw'] = $data['bw']['1'];
-		$stats[$bot["nick"]]['overallrecord'] = $data['bw']['3'] ? $data['bw']['3'] : $data['bw']['5'];
+		$stats[$bot["nick"]]['overallrecord'] = $data['bw']['5'] ? $data['bw']['5'] : $data['bw']['3'];
 		$stats[$bot["nick"]]['offered'] = $data['totals']['1'];
 		$stats['$bot["nick"]']['bandwidth'] = $data['totals']['2'];
 		/* END ASSIGN */
