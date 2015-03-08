@@ -24,6 +24,7 @@ define('UPDATE_FREQ', 3600); //update frequency in seconds (3600 = 1 hour)
 define('IRC', 0); // if you set this to 1 make sure you set the channel and network too
 define('IRC_CHANNEL', 'XDCCParser'); //don't include the #
 define('IRC_NETWORK', 'irc.rizon.net'); //the network
+define('STAT', 1); //0 or 1
 define('URL', ''); // optional: your url goes here. example: http://youpacklist.com/
 // trailing slash required. if left blank, the script will figure out the url.
 define('RSS_TITLE', 'XDCC Mooo!'); //rss title
