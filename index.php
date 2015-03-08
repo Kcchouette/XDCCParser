@@ -48,7 +48,7 @@ if(IRC) {
 	$smarty->assign("irc_net", IRC_NETWORK);
 }
 $smarty->assign("STAT", STAT);
-
+$smarty->assign("NICK", isset($_GET['nick']));
 if(isset($_GET['nick'])) {
 	foreach((xp_get("stats")[$_GET['nick']]) as $key=>$value) {
                 $smarty->assign($key, $value);

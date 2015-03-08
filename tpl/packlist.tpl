@@ -25,7 +25,7 @@
 	<br />
 	<h3>Bookmarks</h3>
 	{foreach from=$bookmarks item=bookmark}
-	<a href="javascript:document.getElementById('search').value='{$bookmark.1|escape:"quotes"|replace:'"':'&quot;'}';p.search();">{$bookmark.0}</a><br />
+	<a href="?search={$bookmark.0}">{$bookmark.0}</a><br />
 	{/foreach}
 {/if}
 </div>
@@ -39,7 +39,7 @@
 	<div class="content">
 		<div class="contentPad">
 			<div id="searchdiv">
-				<form action="#" onsubmit="p.search();return false;">Search:&nbsp;&nbsp;<input type="text" name="search" id="search" class="search" style="width:220px;" {if $search}value="{$search|escape:'html'}" {/if}/>&nbsp;&nbsp;<input type="submit" class="search" value="search" style="width:40px;" />&nbsp;&nbsp;<span class="default">(<a href="#" onclick="p.getLastURI();">permalink</a>)</span></form>
+				<form action="" method="get" >Search:&nbsp;&nbsp;<input type="text" name="search" id="search" class="search" style="width:220px;" {if $search}value="{$search}" {/if}/>&nbsp;&nbsp;<input type="submit" class="search" value="search" style="width:40px;" />&nbsp;&nbsp;<span class="default">(<a href="#" onclick="p.getLastURI();">permalink</a>)</span></form>
 			</div>
 		</div>
 	<h2 id="listname">&nbsp;</h2>
@@ -49,7 +49,7 @@
 	</div>
 
 	<div class="content" align="center">
-		{if $STAT}<table cellspacing='0' width='200'>
+		{if $STAT && $NICK}<table cellspacing='0' width='200'>
 			<tr class="animeColumn"><th colspan='2' class='name'>Stats</th></tr>
 			<tr class='anime0'><td class="name">Packs</td><td class="name">{$packcount}</td></tr>
 			<tr class='anime1'><td class="name">Open Slots</td><td class="name">{$openslots}</td></tr>
