@@ -21,6 +21,7 @@ set_time_limit(0);
 require_once 'core.php';
 
 $bots = array();
+$stats = array();
 $access = xp_get("botconfig");
 $config = xp_get("config");
 $sizes = array('K' => 1.0/1024, 'M' => 1, 'G' => 1024, 'T' => 1048576);
@@ -33,7 +34,8 @@ foreach($access as $file) {
 			print(curl_error($ch)."<br />\n");
 			continue;
 		}
-	} else {
+	} 
+	else {
 		if(!($xdccList = file_get_contents($file))) {
 			print("ERROR: Unable to fetch file {$file}<br />\n");
 			continue;
@@ -41,24 +43,34 @@ foreach($access as $file) {
 	}
 	$xdccList = str_replace( array( chr(2), chr(3), chr(16), chr(31), chr(13) ), "", $xdccList ); //remove irc formatting (or something <_<)
 	
-	if(preg_match("/\s+\*\*\s+To\s+request\s+a\s+file,\s+type\s+\"\/msg\s+(.*?)\s+xdcc\s+send|get\s+#x\"\s+\*\*\s+\W/mi",$xdccList,$data['nick'])) {
-		preg_match("/\s+\*\*\s+(\d+)\s+packs?\s+\*\*\s+(\d+)\s+of\s+(\d+)\s+slots\s+open,\s+(Min:\s+(.*?),\s+)?(Max:\s+.*?,\s+)?Record:\s+(.*)\W/mi",$xdccList,$data['slotsbw']);
-		preg_match("/\s+\*\*\s+Bandwidth\s+Usage\s+\*\*\s+Current:\s+(.*?),\s+(Cap:\s+.*?,\s+){0,1}Record:\s+(.*)\W/mi",$xdccList,$data['bw']);
-		preg_match("/Total\s+Offered:\s+(.*?)\s*(KB|MB|GB|TB|PB)\s+Total\s+Transferred:\s+(.*?)\s*(KB|MB|GB|TB|PB)\W/mi",$xdccList,$data['totals']);
+	if(preg_match("/\s+\*\*\s+To\s+request\s+a\s+file,\s+type\s+\"\/msg\s+(.*?)\s+xdcc\s+send|get\s+#x\"\s+\*\*\s+\W/mi", $xdccList, $data['nick'])) {
+		preg_match("/\s+\*\*\s+(\d+)\s+packs?\s+\*\*\s+(\d+)\s+of\s+(\d+)\s+slots\s+open,\s+(Min:\s+(.*?),\s+)?(Max:\s+(.*?),?\s+)?(Record:\s+(.*))?/mi", $xdccList, $data['slotsbw']);
+		preg_match("/\s+\*\*\s+Bandwidth\s+Usage\s+\*\*\s+Current:\s+(.*?),\s+(Cap:\s+.*?,\s+){0,1}Record:\s+(.*)\W/mi", $xdccList, $data['bw']);
+		preg_match("/Total\s+Offered:\s+(.*)\s+Total\s+Transferred:\s+(.*)/mi", $xdccList, $data['totals']);
 		/* GET PACKS & INFO */
-		
 		$bot = array();
 		$match = $config['group'] ? ".*".str_replace( array("^",".","*","\\","+","?","\$"), array("\^","\.","\*","\\\\","\+","\?","\\\$"), $config['group'] ).".*" : ".*";
-		eval("preg_match_all(\"/#(\\d+)\\s+\\d+x\\s+\\[.*?(\\d+\\.?\\d+?)(\\D)\\]\\s+(\\d+\\.\\d+\\.\\d+\\s+\\d+:\\d+\\s+)?(".$match.")\\W/mi\",\$xdccList,\$bot['packs']);");
+		eval("preg_match_all(\"/#(\\d+)\\s+\\d+x\\s+\\[.*?(\\d+\\.?\\d+?)(\\D)\\]\\s+(\\d+\\.\\d+\\.\\d+\\s+\\d+:\\d+\\s+)?(".$match.")\\W/mi\", \$xdccList, \$bot['packs']);");
 		$bot['nick'] = $data['nick'][1];
-		for($i=0;$i<count($bot['packs'][0]);$i++) {
+		$stats[$bot["nick"]]['packcount'] = $data['slotsbw']['1'];
+		$stats[$bot["nick"]]['openslots'] = $data['slotsbw']['2'];
+		$stats[$bot["nick"]]['totalslots'] = $data['slotsbw']['3'];
+		$stats[$bot["nick"]]['minspeed'] = $data['slotsbw']['5'] ? $data['slotsbw']['5'] : "0.0kB/s";
+		$stats[$bot["nick"]]['maxspeed'] = $data['slotsbw']['9'] ? data['slotsbw']['9'] : $data['slotsbw']['7'];
+		$stats[$bot["nick"]]['currbw'] = $data['bw']['1'];
+		$stats[$bot["nick"]]['overallrecord'] = $data['bw']['3'] ? $data['bw']['3'] : $data['bw']['5'];
+		$stats[$bot["nick"]]['offered'] = $data['totals']['1'];
+		$stats['$bot["nick"]']['bandwidth'] = $data['totals']['2'];
+		/* END ASSIGN */
+
+		for($i=0;$i < count($bot['packs'][0]); $i++) {
 			$bot['packs'][2][$i] = round($bot['packs']['2'][$i]*doubleval($sizes[$bot['packs'][3][$i]]));
 			$bot['packs'][4][$i] = preg_replace("/(.+)(\[|\()[a-f0-9]{8}(\]|\))/i","$1",$bot['packs'][5][$i]);
 			// 5 = file with crc, 4 = file without crc
 			// time stamp support will be added in 2.0. let's just overwrite it for now...
 		}
 		//clean up excess variables
-		for($i=6;$i<=count($bot['packs'])-1;$i++)
+		for($i=6; $i<=count($bot['packs'])-1; $i++)
 			unset($bot['packs'][$i]);
 		unset($bot['packs'][0],$bot['packs'][3]);
 		$bots[] = $bot;
@@ -69,6 +81,7 @@ foreach($access as $file) {
 
 $time = time();
 xp_set("bots",$bots);
+xp_set("stats",$stats);
 xp_set("time",$time);
 
 ?>

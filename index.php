@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL);
 /**
  * XDCC Parser
  * |- Index
@@ -40,6 +40,7 @@ $smarty->assign("skin", $_REQUEST['skin'] ? $_REQUEST['skin'] : SKIN);
 $smarty->assign("display_sc", DISPLAY_SC);
 $smarty->assign("bots", xp_get("bots"));
 $smarty->assign("bookmarks", xp_get("bookmarks"));
+
 $_GET['search'] ? $smarty->assign("search", htmlentities(stripslashes($_GET['search']))) : null;
 $_GET['nick'] ? $smarty->assign("nick", $_GET['nick']) : null;
 if(IRC) {
@@ -47,10 +48,17 @@ if(IRC) {
 	$smarty->assign("irc_net", IRC_NETWORK);
 }
 
+if(isset($_GET['nick'])) {
+	foreach((xp_get("stats")[$_GET['nick']]) as $key=>$value) {
+                $smarty->assign($key, $value);
+                echo($value);
+        }
+}
+
 $smarty->display('packlist.tpl');
 
 //how old is our cache?
 if(time() > xp_get("time")+UPDATE_FREQ)
-	file_get_contents(_URL.'refresh.php',0,stream_context_create(array('http' => array('timeout' => 0))));
+	file_get_contents(_URL . 'refresh.php', 0, stream_context_create(array('http' => array('timeout' => 0))));
 
 ?>

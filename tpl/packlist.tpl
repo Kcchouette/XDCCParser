@@ -47,6 +47,7 @@
 	<div id="listtable">
 		<h1>Javascript is required for this site.</h1>
 	</div>
+
 	<div class="content" align="center">
 		<table cellspacing='0' width='200'>
 			<tr class="animeColumn"><th colspan='2' class='name'>Stats</th></tr>
