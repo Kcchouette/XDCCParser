@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL);
+
 /**
  * XDCC Parser
  * |- Index
@@ -52,7 +52,6 @@ $smarty->assign("STAT", STAT);
 if(isset($_GET['nick'])) {
 	foreach((xp_get("stats")[$_GET['nick']]) as $key=>$value) {
                 $smarty->assign($key, $value);
-                echo($value);
         }
 }
 
