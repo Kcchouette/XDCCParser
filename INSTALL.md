@@ -1,11 +1,11 @@
 #INSTALL
 ##Requirements:
  * PHP5 (Smarty 3.x is _NOT_ compatible with PHP4)
- * [Smarty Template Engine](https://github.com/smarty-php/smarty/) - we offer the last release if you clone
+ * [Smarty Template Engine](https://github.com/smarty-php/smarty/) - we offer the last release if you use `composer`
  * A modern web browser - Internet Explorer 6 is _NOT_ supported
 
 ##Highly Recommended:
- * PHP XCache extension (will work without it, but will be noticeably slower if there are many packs.) 
+ * PHP XCache extension (will work without it, but will be noticeably slower if there are many packs.)
  * PHP CURL extension - without CURL, packlists served by dinoex's built in http server will not be downloaded correctly.
  * Normal txt files on a proper webserver (apache, lighty, nginx, etc) and local txt files will still be fine.
 

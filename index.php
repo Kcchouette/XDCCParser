@@ -4,8 +4,8 @@
  * XDCC Parser
  * |- Index
  *
- * This software is free software and you are permitted to 
- * modify and redistribute it under the terms of the GNU General 
+ * This software is free software and you are permitted to
+ * modify and redistribute it under the terms of the GNU General
  * Public License version 3 as published by the Free Sofware
  * Foundation.
  *
@@ -17,7 +17,7 @@
  */
 
 require_once 'core.php';
-require_once 'smarty/libs/Smarty.class.php';
+require_once 'vendor/smarty/smarty/libs/Smarty.class.php';
 
 //initialize smarty
 $smarty = new Smarty;

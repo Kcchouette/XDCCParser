@@ -28,7 +28,7 @@ if (!($_SERVER['PHP_AUTH_USER'] == ADMIN_USER &&$_SERVER['PHP_AUTH_PW'] == ADMIN
 }
 
 require_once 'core.php';
-require_once 'smarty/libs/Smarty.class.php';
+require_once 'vendor/smarty/smarty/libs/Smarty.class.php';
 
 //initialize smarty
 $smarty = new Smarty;

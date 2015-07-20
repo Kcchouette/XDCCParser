@@ -4,8 +4,8 @@
  * XDCC Parser
  * |- Index
  *
- * This software is free software and you are permitted to 
- * modify and redistribute it under the terms of the GNU General 
+ * This software is free software and you are permitted to
+ * modify and redistribute it under the terms of the GNU General
  * Public License version 3 as published by the Free Sofware
  * Foundation.
  *
@@ -17,7 +17,7 @@
  */
 
 require_once 'core.php';
-require_once 'smarty/libs/Smarty.class.php';
+require_once 'vendor/smarty/smarty/libs/Smarty.class.php';
 
 //figure out url, if needed.
 if(!URL) {
@@ -70,9 +70,9 @@ if(isset($_GET['nick'])) {
 	$smarty->caching = false;
 	$smarty->template_dir = "./tpl";
 	$smarty->compile_dir = "./templates_c";
-		
+
 	$smarty->assign("skin", $_REQUEST['skin'] ? $_REQUEST['skin'] : SKIN);
-	
+
 	$smarty->display("header.tpl");
 	$smarty->assign("bots", xp_get("bots"));
         echo '<h2>Bots</h2>';
