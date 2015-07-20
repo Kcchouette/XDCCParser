@@ -46,7 +46,7 @@ function xp_get($var) {
 	return $data;
 }
 
-function xp_set($var,$data,$xonly=0) {
+function xp_set($var, $data, $xonly=0) {
 	if(XCACHE_ENABLED)
 		xcache_set(XCACHE_PREFIX.$var,$data);
 	if(!$xonly)

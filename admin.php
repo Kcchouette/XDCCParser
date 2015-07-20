@@ -21,7 +21,7 @@ define('ADMIN_USER', "changeme");
 define('ADMIN_PASS', "yougonnagethackedifyoudont");
 
 // DO NOT EDIT BELOW!!
-if (!($_SERVER['PHP_AUTH_USER'] == ADMIN_USER &&$_SERVER['PHP_AUTH_PW'] == ADMIN_PASS)) {
+if (!($_SERVER['PHP_AUTH_USER'] == ADMIN_USER && $_SERVER['PHP_AUTH_PW'] == ADMIN_PASS)) {
 	header('WWW-Authenticate: Basic realm="XDCC Parser Admin"');
 	header('HTTP/1.0 401 Unauthorized');
 	die("<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>403 Forbidden</title>\n</head><body>\n<h1>Forbidden</h1>\n<p>You don't have permission to access ".$_SERVER['REQUEST_URI']." on this server.</p>\n</body></html>\n");
